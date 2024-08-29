@@ -1,5 +1,5 @@
 return {
-  { "catppuccin/nvim", lazy = false, name = "catppuccin" },
+  { "catppuccin/nvim", lazy = false, name = "catppuccin", opts = { transparent_background = true } },
 
   -- Configure LazyVim to load gruvbox
   {
