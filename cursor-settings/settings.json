@@ -1,0 +1,115 @@
+{
+    // Editor Appearance
+    "editor.fontFamily": "MonoLisa",
+    "editor.fontLigatures": true,
+    "editor.lineNumbers": "relative",
+    "editor.minimap.enabled": false,
+    "editor.renderLineHighlight": "none",
+    "editor.occurrencesHighlight": "singleFile",
+    "editor.guides.indentation": false,
+    "breadcrumbs.enabled": false,
+    "editor.semanticHighlighting.enabled": true,
+
+    // Editor Behavior
+    "editor.formatOnSave": true,
+    "editor.detectIndentation": false,
+    "editor.hover.enabled": false,
+    "editor.multiCursorModifier": "ctrlCmd",
+    "editor.snippetSuggestions": "top",
+    "editor.copyWithSyntaxHighlighting": false,
+    "editor.emptySelectionClipboard": false,
+
+    // File Handling
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+
+    // Window Settings
+    "window.newWindowDimensions": "inherit",
+    "window.titleBarStyle": "native",
+    "window.customTitleBarVisibility": "never",
+
+    // Workbench Configuration
+    "workbench.sideBar.location": "right",
+    "workbench.editor.enablePreview": false,
+    "workbench.activityBar.location": "hidden",
+    "workbench.statusBar.visible": false,
+    "workbench.editor.editorActionsLocation": "hidden",
+    // "workbench.editor.showTabs": "none",
+
+    // Diff Editor
+    "diffEditor.ignoreTrimWhitespace": false,
+    "diffEditor.renderSideBySide": false,
+
+    // Language Specific
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "C_Cpp.default.compilerPath": "/usr/bin/g++",
+
+    // Terminal
+    "terminal.integrated.fontFamily": "MonoLisa",
+    "terminal.integrated.cursorStyle": "underline",
+    "terminal.integrated.cursorBlinking": true,
+
+    // Vim Configuration
+    "vim.hlsearch": true,
+    "vim.useSystemClipboard": true,
+    "vim.leader": "<space>",
+    "vim.normalModeKeyBindings": [
+        {
+            "before": ["g", "d"],
+            "commands": ["editor.action.revealDefinition"]
+        },
+        {
+            "before": ["<Esc>"],
+            "commands": [":nohl"]
+        },
+        {
+            "before": ["K"],
+            "commands": ["editor.action.moveLinesUpAction"]
+        },
+        {
+            "before": ["J"],
+            "commands": ["editor.action.moveLinesDownAction"]
+        },
+        {
+            "before": ["<Esc>"],
+            "after": ["<Esc>"],
+            "commands": ["workbench.action.files.save"]
+        },
+    ],
+    "vim.visualModeKeyBindings": [
+        {
+            "before": ["<Esc>"],
+            "after": ["<Esc>"],
+            "commands": ["workbench.action.files.save"]
+        },
+        {
+            "before": ["K"],
+            "commands": ["editor.action.moveLinesUpAction"]
+        },
+        {
+            "before": ["J"],
+            "commands": ["editor.action.moveLinesDownAction"]
+        }
+    ],
+    "vim.insertModeKeyBindings": [
+        {
+            "before": ["<Esc>"],
+            "after": ["<Esc>"],
+            "commands": ["workbench.action.files.save"]
+        }
+    ],
+
+    // Zen Mode
+    // "zenMode.showTabs": "none",
+    // "zenMode.hideLineNumbers": false,
+    "zenMode.centerLayout": false,
+
+    // Miscellaneous
+    "security.workspace.trust.untrustedFiles": "open",
+    "redhat.telemetry.enabled": true,
+    "yaml.maxItemsComputed": 10000,
+    "explorer.confirmDelete": false
+}
