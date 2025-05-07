@@ -6,8 +6,6 @@ return {
 
     -- Disable the 'K' keymap set by LazyVim's LSP configuration
     keys[#keys + 1] = { "K", false }
-
-    -- Update the LSP config with the modified keys
     opts.keys = keys
 
     -- Disable inlay hints
