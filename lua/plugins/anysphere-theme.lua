@@ -1,12 +1,12 @@
 return {
   {
-    "westonclark/anysphere.nvim",
+    "vague2k/vague.nvim",
     lazy = false,
     config = function()
-      require("anysphere").setup({
+      require("vague").setup({
         transparent = true,
       })
-      vim.cmd.colorscheme("anysphere")
+      vim.cmd.colorscheme("vague")
     end,
   },
 }
