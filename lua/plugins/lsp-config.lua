@@ -1,14 +1,16 @@
 return {
   "neovim/nvim-lspconfig",
-  opts = function(_, opts)
-    -- Get the default keymaps from LazyVim
-    local keys = require("lazyvim.plugins.lsp.keymaps").get()
-
-    -- Disable the 'K' keymap set by LazyVim's LSP configuration
-    keys[#keys + 1] = { "K", false }
-    opts.keys = keys
-
+  opts = {
     -- Disable inlay hints
-    opts.inlay_hints = { enabled = false }
-  end,
+    inlay_hints = { enabled = false },
+    -- Configure LSP keymaps for all servers
+    servers = {
+      ["*"] = {
+        keys = {
+          -- Disable the 'K' keymap set by LazyVim's LSP configuration
+          { "K", false },
+        },
+      },
+    },
+  },
 }

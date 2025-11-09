@@ -3,7 +3,7 @@
 -- Add any additional keymaps here
 --
 -- Save on esc
-vim.keymap.set({ "i", "x", "n", "s" }, "<Esc>", "<Esc>:w<CR>", { noremap = true, silent = true })
+vim.keymap.set({ "i", "x", "n", "s" }, "<Esc>", "<Esc>: silent w<CR>", { noremap = true, silent = true })
 
 -- Close buffer with <Leader>w
 vim.keymap.set("n", "<Leader>w", "<Cmd>bdelete<CR>", { noremap = true, silent = true })
