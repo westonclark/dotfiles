@@ -3,3 +3,4 @@
 -- Add any additional options here
 vim.g.snacks_scroll = false
 vim.opt.laststatus = 0  -- Completely disable the statusline
+vim.opt.cursorline = false  -- Disable current line highlight
