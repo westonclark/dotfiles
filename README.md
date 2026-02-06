@@ -1,3 +1,3 @@
-# dotfiles
+# Dotfiles
 
-A starting place for my neovim config :)
+My `.config` files for development

@@ -1,0 +1,10 @@
+font-family="Lilex"
+font-size=13
+
+window-save-state=always
+window-inherit-working-directory=true
+
+macos-titlebar-style=tabs
+theme = Vague
+
+keybind=shift+enter=text:\n
