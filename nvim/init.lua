@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+-- DEPENDENCIES (for clean install) --
+-------------------------------------------------------------------
+-- brew install neovim --HEAD              # Neovim 0.12+
+-- brew install lazygit                    # Git TUI
+-- brew install ripgrep                    # Fast grep (for mini.pick)
+-- brew install fd                         # Fast file search (optional)
+--
+-- LSP Servers:
+-- brew install lua-language-server        # lua_ls
+-- brew install typescript-language-server # ts_ls
+-- brew install rust-analyzer              # rust_analyzer
+-- brew install gopls                      # gopls
+-- brew install marksman                   # marksman
+-- brew install pyright                    # pyright
+-- xcode-select --install                  # clangd (comes with Xcode CLI tools)
+--
+-- Languages:
+-- brew install node
+-- brew install cargo
+-- brew install go
+-- brew install python
+-- brew install typescript
+-- brew install typst
+-- curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+--
+-- Utilities
+-- brew install starship
+
+-------------------------------------------------------------------
 -- OPTIONS --
 -------------------------------------------------------------------
 vim.g.mapleader = " "
@@ -191,33 +220,3 @@ vim.pack.add({
 	{ src = "https://github.com/kdheepak/lazygit.nvim" },
 })
 vim.keymap.set("n", "<leader>g", "<cmd>LazyGit<cr>", { noremap = true, silent = true })
---
---
--------------------------------------------------------------------
--- DEPENDENCIES (for clean install) --
--------------------------------------------------------------------
--- brew install neovim --HEAD              # Neovim 0.12+
--- brew install lazygit                    # Git TUI
--- brew install ripgrep                    # Fast grep (for mini.pick)
--- brew install fd                         # Fast file search (optional)
---
--- LSP Servers:
--- brew install lua-language-server        # lua_ls
--- brew install typescript-language-server # ts_ls
--- brew install rust-analyzer              # rust_analyzer
--- brew install gopls                      # gopls
--- brew install marksman                   # marksman
--- brew install pyright                    # pyright
--- xcode-select --install                  # clangd (comes with Xcode CLI tools)
---
--- Languages:
--- brew install node
--- brew install cargo
--- brew install go
--- brew install python
--- brew install typescript
--- brew install typst
--- curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
---
--- Utilities
--- brew install starship
