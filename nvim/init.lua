@@ -133,26 +133,17 @@ vim.api.nvim_create_autocmd('LspAttach', {
 -- BLINK LSP AUTOCOMPLETE --
 -------------------------------------------------------------------
 vim.pack.add({
-  { src = "https://github.com/saghen/blink.cmp", version = "v0.7.6" }
+  { src = "https://github.com/saghen/blink.cmp", version = "v1.9.1" }
 })
 require('blink.cmp').setup({
-  keymap = {
-    ['<Tab>'] = { 'select_and_accept', 'snippet_forward', 'fallback' },
-  },
   completion = {
     ghost_text = { enabled = true },
     menu = {
-      border = 'rounded',
-      draw = {
-        columns = { { "label" } },
-      },
-    },
-    documentation = {
       auto_show = false,
     },
   },
-  appearance = {
-    nerd_font_variant = 'mono'
+  keymap = {
+    preset = 'super-tab',
   },
 })
 
