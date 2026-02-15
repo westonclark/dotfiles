@@ -175,6 +175,14 @@ require('mini.pick').setup({
 vim.keymap.set("n", "<Leader><space>", "<Cmd>Pick files<CR>", { silent = true })
 vim.keymap.set('n', '<leader>b', require('mini.pick').builtin.buffers)
 vim.keymap.set("n", "<Leader>/", require('mini.pick').builtin.grep_live)
+vim.keymap.set("n", "<Leader>r", function()
+  require('mini.pick').start({
+    source = {
+      items = vim.v.oldfiles,
+      name = 'Recent Files',
+    },
+  })
+end, { desc = "Recent files" })
 
 ------------------------------------------------------------------
 -- OIL FILE EXPLORER--
