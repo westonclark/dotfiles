@@ -1,10 +1,12 @@
--------------------------------------------------------------------
+-----------------------------------------------------------------
 -- DEPENDENCIES (for clean install) --
 -------------------------------------------------------------------
 -- brew install neovim --HEAD              # Neovim 0.12+
 -- brew install lazygit                    # Git TUI
 -- brew install ripgrep                    # Fast grep (for mini.pick)
 -- brew install fd                         # Fast file search (optional)
+-- brew install tree-sitter                # Syntax highlighting
+-- npm install -g tree-sitter-cli          # Syntax highlighting
 --
 -- LSP Servers:
 -- brew install lua-language-server        # lua_ls
@@ -26,22 +28,32 @@
 --
 -- Utilities
 -- brew install starship
+--
+-- After opening Neovim for the first time:
+-- :TSInstall markdown markdown_inline lua typescript javascript python rust go json
+-- :TSUpdate   # Install/update treesitter parsers
 
 -------------------------------------------------------------------
 -- OPTIONS --
 -------------------------------------------------------------------
 vim.g.mapleader = " "
 vim.opt.swapfile = false
+vim.opt.clipboard = "unnamedplus"
+
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.signcolumn = "yes"
 vim.opt.winborder = "rounded"
-vim.opt.clipboard = "unnamedplus"
+
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
+
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
+
+vim.opt.conceallevel = 2
+vim.opt.concealcursor = ""
 
 -------------------------------------------------------------------
 -- KEYMAPS --
@@ -79,13 +91,27 @@ vim.cmd.colorscheme("vague")
 vim.api.nvim_set_hl(0, "StatusLine", { bg = "NONE" })
 
 -------------------------------------------------------------------
--- INDENT BLANKLINE (SCOPE LINES) --
+-- INDENT BLANKLINE --
 -------------------------------------------------------------------
 vim.pack.add({
   { src = "https://github.com/lukas-reineke/indent-blankline.nvim" },
 })
 require("ibl").setup({
   scope = { enabled = false },
+})
+
+-------------------------------------------------------------------
+-- TREESITTER --
+-------------------------------------------------------------------
+vim.pack.add({
+  { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
+})
+
+-- Enable treesitter highlighting for all filetypes
+vim.api.nvim_create_autocmd('FileType', {
+  callback = function()
+    pcall(vim.treesitter.start)
+  end,
 })
 
 -------------------------------------------------------------------
@@ -183,6 +209,14 @@ vim.keymap.set("n", "<Leader>r", function()
     },
   })
 end, { desc = "Recent files" })
+
+-------------------------------------------------------------------
+-- MINI SURROUND --
+-------------------------------------------------------------------
+vim.pack.add({
+  { src = "https://github.com/echasnovski/mini.surround" },
+})
+require('mini.surround').setup()
 
 ------------------------------------------------------------------
 -- OIL FILE EXPLORER--
