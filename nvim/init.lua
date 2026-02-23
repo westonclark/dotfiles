@@ -75,6 +75,19 @@ vim.keymap.set("n", "J", ":move +1<cr>", { silent = true })
 vim.keymap.set("v", "K", ":move '<-2<cr>gv", { silent = true })
 vim.keymap.set("v", "J", ":move '>+1<cr>gv", { silent = true })
 
+-- Quickfix: close list and center on selection
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'qf',
+  callback = function(e)
+    vim.keymap.set('n', '<CR>', function()
+      local line = vim.fn.line('.')
+      vim.cmd('cclose')
+      vim.cmd(line .. 'cc')
+      vim.cmd('normal! zz')
+    end, { buffer = e.buf, silent = true })
+  end,
+})
+
 -- Keep cursor centered
 vim.keymap.set("n", "<C-d>", "<C-d>zz") -- Page down, stay centered
 vim.keymap.set("n", "<C-u>", "<C-u>zz") -- Page up, stay centered
@@ -147,7 +160,15 @@ vim.lsp.enable({
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(ev)
     vim.keymap.set("n", "H", vim.lsp.buf.hover, { buffer = ev.buf, silent = true })
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { buffer = ev.buf, silent = true })
+    vim.keymap.set('n', 'gd', function()
+      vim.lsp.buf.definition({
+        on_list = function(opts)
+          vim.fn.setqflist({}, ' ', opts)
+          vim.cmd('cfirst')
+          vim.cmd('normal! zz')
+        end
+      })
+    end, { buffer = ev.buf, silent = true })
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { buffer = ev.buf, silent = true })
     vim.keymap.set('n', 'gr', vim.lsp.buf.references, { buffer = ev.buf, silent = true })
     vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { buffer = ev.buf, silent = true })
