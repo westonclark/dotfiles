@@ -172,6 +172,13 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { buffer = ev.buf, silent = true })
     vim.keymap.set('n', 'gr', vim.lsp.buf.references, { buffer = ev.buf, silent = true })
     vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { buffer = ev.buf, silent = true })
+    vim.keymap.set('n', '<leader>d', function()
+      local bufnr, win = vim.diagnostic.open_float()
+      if win then
+        vim.api.nvim_set_current_win(win)
+        vim.keymap.set('n', '<Esc>', '<Cmd>close<CR>', { buffer = bufnr, silent = true })
+      end
+    end, { buffer = ev.buf, silent = true })
     vim.keymap.set("n", "<Leader>f", vim.lsp.buf.format, { buffer = ev.buf, silent = true })
   end,
 })
