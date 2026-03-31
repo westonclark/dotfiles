@@ -88,7 +88,7 @@ vim.api.nvim_create_autocmd('FileType', {
   end,
 })
 
--- Keep cursor centered
+-- Keep cursor centered on paging
 vim.keymap.set("n", "<C-d>", "<C-d>zz") -- Page down, stay centered
 vim.keymap.set("n", "<C-u>", "<C-u>zz") -- Page up, stay centered
 vim.keymap.set("n", "n", "nzzzv")       -- Next search, stay centered
@@ -209,8 +209,8 @@ vim.pack.add({
 })
 require('mini.pick').setup({
   mappings = {
-    move_down = '<C-j>',
-    move_up = '<C-k>',
+    move_down = 'j',
+    move_up = 'k',
   },
   window = {
     config = function()
@@ -232,19 +232,19 @@ vim.keymap.set("n", "<Leader>/", require('mini.pick').builtin.grep_live)
 vim.keymap.set("n", "<Leader>r", function()
   require('mini.pick').start({
     source = {
-      items = vim.v.oldfiles,
+      items = require('mini.visits').list_paths(),
       name = 'Recent Files',
     },
   })
 end, { desc = "Recent files" })
 
 -------------------------------------------------------------------
--- MINI SURROUND --
+-- MINI VISITS --
 -------------------------------------------------------------------
 vim.pack.add({
-  { src = "https://github.com/echasnovski/mini.surround" },
+  { src = "https://github.com/echasnovski/mini.visits" },
 })
-require('mini.surround').setup()
+require('mini.visits').setup()
 
 ------------------------------------------------------------------
 -- OIL FILE EXPLORER--
